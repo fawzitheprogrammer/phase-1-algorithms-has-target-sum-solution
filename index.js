@@ -1,18 +1,23 @@
+// Additional test cases
+console.log(hasTargetSum([3, 4, 552, 66, 4, 5], 10)); 
+console.log(hasTargetSum([7, 19, 7, 5, 30], 85));   
+console.log(hasTargetSum([1, 45, 5], 8));            
+console.log(hasTargetSum([1, 7, 1, 2, 88], 90));      
+console.log(hasTargetSum([-1, 43, 1], 0));            
+
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = new Set(); // initialize an empty Set
+  for (const number of array) {
+    const complement = target - number;
+
+    // .has returns true if the Set includes the complement
+    if (seenNumbers.has(complement)) return true;
+
+    // .add adds the number to the Set
+    seenNumbers.add(number);
+  }
+  return false;
 }
-
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
